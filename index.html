@@ -20,15 +20,15 @@
         <div class="content">
             <p>
                 <span class="emphasized">Brokenwire</span> is a novel attack against the <span class="emphasized">Combined Charging System (CCS)</span>, one of the most widely used DC rapid charging technologies for electric vehicles (EVs).
-                The attack <span class="emphasized">interrupts necessary control communication</span> between the vehicle and charger, causing charging sessions to abort. 
-                The attack can be conducted <span class="emphasized">wirelessly from a distance</span> using electromagnetic interference, allowing individual vehicles or entire fleets to be disrupted simultaneously.  
-                In addition, the attack can be mounted with off-the-shelf radio hardware and minimal technical knowledge. 
+                The attack <span class="emphasized">interrupts necessary control communication</span> between the vehicle and charger, causing charging sessions to abort.
+                The attack can be conducted <span class="emphasized">wirelessly from a distance</span> using electromagnetic interference, allowing individual vehicles or entire fleets to be disrupted simultaneously.
+                In addition, the attack can be mounted with off-the-shelf radio hardware and minimal technical knowledge.
                 The exploited behavior is a required part of the HomePlug Green PHY, DIN 70121 & ISO 15118 standards and all known implementations exhibit it.
             </p>
             <p>
-                Brokenwire has immediate implications for many of the <span class="emphasized">12 million</span> battery EVs estimated to be on the roads worldwide --- and profound effects on the new wave of electrification for vehicle fleets, both for private enterprise and for crucial public services. 
+                Brokenwire has immediate implications for many of the <span class="emphasized">12 million</span> battery EVs estimated to be on the roads worldwide --- and profound effects on the new wave of electrification for vehicle fleets, both for private enterprise and for crucial public services.
                 In addition to electric cars, Brokenwire affects <span class="emphasized">electric ships, airplanes and heavy duty vehicles</span>.
-                As such, we conducted a disclosure to industry and discuss a range of mitigation techniques that could be deployed to limit the impact. 
+                As such, we conducted a disclosure to industry and discuss a range of mitigation techniques that could be deployed to limit the impact.
             </p>
             <h5>Please note that due to the responsible disclosure a detailed explanation of the attack cannot be provided. This allows the manufacturers to work on a solution while reducing the risk of an exploitation of the vulnerability in the wild.</h5>
         <div class="action-grid">
@@ -63,12 +63,15 @@
                         <p class="action-item-text">Get in touch</p>
                     </div>
                     <p>If you have any questions, feel free to reach out to us.</p>
+                    <p>
+                      <a href="files/info@brokenwire.fail-pubkey.asc" onclick="event.stopImmediatePropagation();" class="coloured">PGP Key</a> <!--onclick to prevent the email link triggering as well-->
+                    </p>
                 </div>
             </div>
         </div>
         <h3>Background</h3>
         <p>
-            The charging technology standardized as the Combined Charging System (CCS) --- the name presented to a vehicle user --- is in fact a collection of multiple technical standards. 
+            The charging technology standardized as the Combined Charging System (CCS) --- the name presented to a vehicle user --- is in fact a collection of multiple technical standards.
             During the charging session, the Electric Vehicle (EV) and the Electric Vehicle Supply Equipment (EVSE) exchange important messages, such as the State of Charge (SoC) or the maximum possible current.
             The high-bandwidth IP link used for the communication is provided by the HomePlug Green PHY (HPGP) power-line communication (PLC) technology.
             Depending on the geographical region, CCS uses different plug types which are illustrated in Figure 1.
@@ -95,7 +98,7 @@
                 We evaluated the attack in a lab environment under controlled settings for different distances between the charging cable and the attacker.
                 Our testbed was composed of the same HPGP modems found in most EVs and charging stations.
                 On the attacker side, we used a software-defined radio (LimeSDR) together with a 1 W RF amplifier and a self-made dipole antenna.
-                In addition, we tested the attack in a real-world study on seven vehicles from different manufacturers and 18 DC high-power chargers.             
+                In addition, we tested the attack in a real-world study on seven vehicles from different manufacturers and 18 DC high-power chargers.
             </p>
             <h4>Results</h4>
             <p>
@@ -180,25 +183,25 @@
         <p class="contributions_footnote"><sup>&#8224;</sup>Both authors contributed equally to this research.</p>
         <h5>Ethical Considerations</h5>
         <p class="acknowledgements">
-            Given the nature of the infrastructure under investigation, we collaborated with several government entities for our evaluation. 
-            We further took precautions to limit any risk of unintentional effects from our testing. 
-            We selected only test sites for which no other charging parks were within a reasonable range. 
-            We only executed the attack when no other vehicles were charging and could immediately abort the experiments if the conditions became uncontrolled. 
+            Given the nature of the infrastructure under investigation, we collaborated with several government entities for our evaluation.
+            We further took precautions to limit any risk of unintentional effects from our testing.
+            We selected only test sites for which no other charging parks were within a reasonable range.
+            We only executed the attack when no other vehicles were charging and could immediately abort the experiments if the conditions became uncontrolled.
             Outside our closed laboratory sites, we were limited to a maximum output power of 1 W to ensure our attack signal was compliant with all national transmission regulations.
         </p>
         <h5>Acknowledgements</h5>
         <p class="acknowledgements">We are grateful for the support from Armasuisse and EWZ (Elektrizitätswerk der Stadt Zürich).</p>
     </div>
-        
+
         <div class="footer">
                 <a class="footer-text">© 2022 Systems Security Lab. All rights reserved.</a>
         </div>
     </div>
-    
-
-    
 
 
-    
-    
+
+
+
+
+
 </body>

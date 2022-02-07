@@ -45,6 +45,19 @@ h4 {
     margin-top: -3px;
 }
 
+a:link {
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+a:active {
+  text-decoration: underline;
+}
+
 @media screen and (min-width: 48em) and (max-width: 64em) {
     h1 {
         font-size: 3em;
@@ -62,7 +75,7 @@ h4 {
         border-bottom-color: #eeeeee;
         border-bottom-width: 2px;
     }
-    
+
     h3 {
         font-weight: 400;
         font-size: 1.5em;
@@ -72,7 +85,7 @@ h4 {
         padding-top: 20px;
         width: 25%;
         margin-bottom: -30px;
-    }    
+    }
 
     .l-box {
         background-color: #fafafa;
@@ -93,7 +106,7 @@ h4 {
         margin: 0px;
         margin-top: 30px;
     }
-    
+
     .qa-text {
         font-size: 1.0em;
         margin: 0px;
@@ -134,11 +147,11 @@ h4 {
     .figure-1-1 {
         width: 90%;
     }
-    
+
     .figure-1-a {
         width: 45%;
     }
-    
+
     .figure-1-b {
         width: 45%;
     }
@@ -192,7 +205,7 @@ h4 {
         padding-top: 10px;
         width: 25%;
         margin-bottom: -30px;
-    }    
+    }
 
     .l-box {
         background-color: #fafafa;
@@ -213,7 +226,7 @@ h4 {
         margin: 0px;
         margin-top: 30px;
     }
-    
+
     .qa-text {
         font-size: 1.0em;
         margin: 0px;
@@ -255,11 +268,11 @@ h4 {
     .figure-1-1 {
         width: 90%;
     }
-    
+
     .figure-1-a {
         width: 45%;
     }
-    
+
     .figure-1-b {
         width: 45%;
     }
@@ -314,7 +327,7 @@ h4 {
         padding-top: 20px;
         width: 25%;
         margin-bottom: -20px;
-    }    
+    }
 
     .l-box {
         background-color: #fafafa;
@@ -334,7 +347,7 @@ h4 {
         margin-bottom: -10px;
         font-weight: 500;
     }
-    
+
     .qa-text {
         font-size: 0.8em;
         min-height: 50px;
@@ -383,7 +396,7 @@ h4 {
         font-family: 'Montserrat';
         line-height: 1.2em;
     }
-    
+
     .figure-1-1 {
         width: 95%;
     }
@@ -391,7 +404,7 @@ h4 {
     .figure-1-a {
         width: 45%;
     }
-    
+
     .figure-1-b {
         width: 45%;
     }
@@ -435,7 +448,7 @@ h4 {
         border-bottom-color: #eeeeee;
         border-bottom-width: 2px;
     }
-    
+
     h3 {
         font-weight: 400;
         font-size: 1.35em;
@@ -469,7 +482,7 @@ h4 {
         margin-bottom: -10px;
         font-weight: 500;
     }
-    
+
     .qa-text {
         min-height: 50px;
     }
@@ -521,7 +534,7 @@ h4 {
         font-family: 'Montserrat';
         line-height: 1em;
     }
-    
+
     .figure-1-1 {
         width: 100%;
     }
@@ -529,11 +542,11 @@ h4 {
     .figure-1-a {
         width: 35%;
     }
-    
+
     .figure-1-b {
         width: 35%;
     }
-    
+
     .contributor_item {
         width: 100%;
         text-align: left;
