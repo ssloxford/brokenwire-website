@@ -1,0 +1,628 @@
+.main {
+    font-family: 'Montserrat';
+}
+
+.coloured {
+    color: #F27200;
+}
+
+.content {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Montserrat';
+    max-width: 868px;
+    font-weight: 300;
+    font-size: 1.15em;
+    line-height: 1.5em;
+    text-align: justify;
+    box-sizing: border-box;
+    padding-top: 10px;
+}
+
+.icon_text_container {
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    font-size: 3em;
+    font-weight: 50;
+    text-align: center;
+}
+
+h4 {
+    font-size: 1.15em;
+    font-weight: 400;
+}
+
+.emphasized {
+    font-weight: 401;
+}
+
+.contributions_footnote {
+    font-size: 0.7em;
+    margin-top: -3px;
+}
+
+@media screen and (min-width: 48em) and (max-width: 64em) {
+    h1 {
+        font-size: 3em;
+        font-weight: 50;
+        text-align: center;
+    }
+
+    h2 {
+        margin-top: -30px;
+        font-size: 1.2em;
+        font-weight: 100;
+        padding-bottom: 10px;
+        text-align: center;
+        border-bottom: solid;
+        border-bottom-color: #eeeeee;
+        border-bottom-width: 2px;
+    }
+    
+    h3 {
+        font-weight: 400;
+        font-size: 1.5em;
+    }
+
+    .logo {
+        padding-top: 20px;
+        width: 25%;
+        margin-bottom: -30px;
+    }    
+
+    .l-box {
+        background-color: #fafafa;
+        min-height: 100px;
+        padding: 15px;
+        margin: 8px;
+        max-width: 42%;
+        cursor: pointer;
+    }
+
+    .l-box:hover {
+        box-shadow: rgba(0, 0, 0, 0.09) 0 6px 9px 0;
+    }
+
+    .qa-header {
+        font-size: 1.0em;
+        font-weight: 500;
+        margin: 0px;
+        margin-top: 30px;
+    }
+    
+    .qa-text {
+        font-size: 1.0em;
+        margin: 0px;
+        margin-top: 12px;
+    }
+
+    .acknowledgements {
+        font-size: 0.8em;
+    }
+
+    .divider{
+        height: 108px;
+        border-left:2px solid #eee;
+        margin-top: 33px;
+    }
+
+    .figure-caption {
+        font-family: 'Montserrat';
+        font-size: 1em;
+        font-weight: 400;
+    }
+
+    .subfigure-caption {
+        font-family: 'Montserrat';
+        font-size: 0.9em;
+        font-weight: 400;
+    }
+
+    .subfigure-1-2 {
+        font-family: 'Montserrat';
+        text-align: center;
+    }
+
+    .figure-1-2 {
+        font-family: 'Montserrat';
+    }
+
+    .figure-1-1 {
+        width: 90%;
+    }
+    
+    .figure-1-a {
+        width: 45%;
+    }
+    
+    .figure-1-b {
+        width: 45%;
+    }
+
+    .contributor_item {
+        width: 50%;
+        text-align: center;
+        letter-spacing: normal;
+        margin-bottom: 25px;
+    }
+
+    .contributor_image {
+        width: 75%;
+    }
+
+    .contributer_name {
+        margin: 0px;
+    }
+    .contributer_university {
+        margin: 0px;
+        margin-top: -3px;
+        font-size: 0.8em;
+    }
+
+}
+
+@media screen and (min-width: 64em) {
+    h1 {
+        font-size: 3em;
+        font-weight: 50;
+        text-align: center;
+    }
+
+    h2 {
+        margin-top: -30px;
+        font-size: 1.4em;
+        font-weight: 100;
+        padding-bottom: 10px;
+        text-align: center;
+        border-bottom: solid;
+        border-bottom-color: #eeeeee;
+        border-bottom-width: 2px;
+    }
+
+    h3 {
+        font-weight: 400;
+        font-size: 1.5em;
+    }
+
+    .logo {
+        padding-top: 10px;
+        width: 25%;
+        margin-bottom: -30px;
+    }    
+
+    .l-box {
+        background-color: #fafafa;
+        min-height: 100px;
+        padding: 15px;
+        margin: 8px;
+        max-width: 44%;
+        cursor: pointer;
+    }
+
+    .l-box:hover {
+        box-shadow: rgba(0, 0, 0, 0.09) 0 6px 9px 0;
+    }
+
+    .qa-header {
+        font-size: 1.0em;
+        font-weight: 500;
+        margin: 0px;
+        margin-top: 30px;
+    }
+    
+    .qa-text {
+        font-size: 1.0em;
+        margin: 0px;
+        margin-top: 12px;
+    }
+
+
+    .acknowledgements {
+        font-size: 0.8em;
+    }
+
+    .divider{
+        height: 108px;
+        border-left:2px solid #eee;
+        margin-top: 33px;
+    }
+
+    .figure-caption {
+        font-family: 'Montserrat';
+        font-size: 1em;
+        font-weight: 400;
+    }
+
+    .subfigure-caption {
+        font-family: 'Montserrat';
+        font-size: 0.90em;
+        font-weight: 400;
+    }
+
+    .subfigure-1-2 {
+        font-family: 'Montserrat';
+        text-align: center;
+    }
+
+    .figure-1-2 {
+        font-family: 'Montserrat';
+    }
+
+    .figure-1-1 {
+        width: 90%;
+    }
+    
+    .figure-1-a {
+        width: 45%;
+    }
+    
+    .figure-1-b {
+        width: 45%;
+    }
+
+    .contributor_item {
+        width: 25%;
+        text-align: center;
+        letter-spacing: normal;
+        margin-bottom: 10px;
+    }
+
+    .contributor_image {
+        width: 75%;
+    }
+
+    .contributer_name {
+        margin: 0px;
+    }
+
+    .contributer_university {
+        margin: 0px;
+        margin-top: -3px;
+        font-size: 0.8em;
+    }
+}
+
+@media screen and (min-width: 35.5em) and (max-width: 48em) {
+
+    h1 {
+        font-size: 2em;
+        font-weight: 50;
+        text-align: center;
+    }
+
+    h2 {
+        margin-top: -20px;
+        font-size: 1.0em;
+        font-weight: 100;
+        padding-bottom: 10px;
+        text-align: center;
+        border-bottom: solid;
+        border-bottom-color: #eeeeee;
+        border-bottom-width: 2px;
+    }
+
+    h3 {
+        font-weight: 400;
+        font-size: 1.5em;
+    }
+
+    .logo {
+        padding-top: 20px;
+        width: 25%;
+        margin-bottom: -20px;
+    }    
+
+    .l-box {
+        background-color: #fafafa;
+        min-height: 100px;
+        padding: 18px;
+        margin: 10px;
+        max-width: 100%;
+        cursor: pointer;
+    }
+
+    .l-box:hover {
+        box-shadow: rgba(0, 0, 0, 0.09) 0 6px 9px 0;
+    }
+
+    .qa-header {
+        font-size: 0.9em;
+        margin-bottom: -10px;
+        font-weight: 500;
+    }
+    
+    .qa-text {
+        font-size: 0.8em;
+        min-height: 50px;
+    }
+
+    .acknowledgements {
+        font-size: 0.7em;
+    }
+
+    .divider{
+        width: 70%;
+        height: 0px;
+        border-top:2px solid #eee;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 0px;
+    }
+
+    .divider_horizontal{
+        width: 70%;
+        border-top:2px solid #eee;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .figure-caption {
+        font-family: 'Montserrat';
+        font-size: 0.85em;
+        font-weight: 400;
+    }
+
+    .subfigure-caption {
+        font-family: 'Montserrat';
+        font-size: 0.80em;
+        font-weight: 400;
+    }
+
+    .subfigure-1-2 {
+        font-family: 'Montserrat';
+        text-align: center;
+        width: 50%;
+        font-size: 0.8 !important;
+    }
+
+    .figure-1-2 {
+        font-family: 'Montserrat';
+        line-height: 1.2em;
+    }
+    
+    .figure-1-1 {
+        width: 95%;
+    }
+
+    .figure-1-a {
+        width: 45%;
+    }
+    
+    .figure-1-b {
+        width: 45%;
+    }
+
+    .contributor_item {
+        width: 50%;
+        text-align: center;
+        letter-spacing: normal;
+        margin-bottom: 20px;
+    }
+
+    .contributor_image {
+        width: 75%;
+    }
+
+    .contributer_name {
+        margin: 0px;
+    }
+    .contributer_university {
+        margin: 0px;
+        margin-left: 10px;
+        font-size: 0.8em;
+    }
+}
+
+@media screen and (min-width: 1em) and (max-width: 35.5em) {
+
+    h1 {
+        font-size: 1.7em;
+        font-weight: 50;
+        text-align: center;
+    }
+
+    h2 {
+        margin-top: -15px;
+        font-size: 0.9em;
+        font-weight: 100;
+        padding-bottom: 10px;
+        text-align: center;
+        border-bottom: solid;
+        border-bottom-color: #eeeeee;
+        border-bottom-width: 2px;
+    }
+    
+    h3 {
+        font-weight: 400;
+        font-size: 1.35em;
+        padding-top: 15px;
+    }
+
+    .logo {
+        padding-top: 20px;
+        width: 25%;
+        margin-bottom: -20px;
+    }
+
+    p {
+        font-size: 0.8em;
+    }
+
+    .l-box {
+        background-color: #fafafa;
+        min-height: 100px;
+        padding: 10px;
+        margin: 10px;
+        max-width: 100%;
+        cursor: pointer;
+    }
+
+    .l-box:hover {
+        box-shadow: rgba(0, 0, 0, 0.09) 0 6px 9px 0;
+    }
+
+    .qa-header {
+        margin-bottom: -10px;
+        font-weight: 500;
+    }
+    
+    .qa-text {
+        min-height: 50px;
+    }
+
+    .acknowledgements {
+        font-size: 0.7em;
+    }
+
+    .footer-text {
+        margin-top: 5px;
+        font-size: 0.6em;
+    }
+
+    .divider{
+        width: 70%;
+        height: 0px;
+        border-top:2px solid #eee;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 0px;
+    }
+
+    .divider_horizontal{
+        width: 70%;
+        border-top:2px solid #eee;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .figure-caption {
+        font-family: 'Montserrat';
+        font-size: 0.8em;
+        font-weight: 400;
+    }
+
+    .subfigure-caption {
+        font-family: 'Montserrat';
+        font-size: 0.80em;
+        font-weight: 400;
+    }
+
+    .subfigure-1-2 {
+        font-family: 'Montserrat';
+        text-align: center;
+        width: 100%;
+    }
+
+    .figure-1-2 {
+        font-family: 'Montserrat';
+        line-height: 1em;
+    }
+    
+    .figure-1-1 {
+        width: 100%;
+    }
+
+    .figure-1-a {
+        width: 35%;
+    }
+    
+    .figure-1-b {
+        width: 35%;
+    }
+    
+    .contributor_item {
+        width: 100%;
+        text-align: left;
+        letter-spacing: normal;
+        margin-bottom: 20px;
+    }
+
+    .contributor_image {
+        width: 75%;
+    }
+
+    .contributer_name {
+        margin: 0px;
+        float: left;
+        width: 40%;
+        min-width: 115px;
+    }
+    .contributer_university {
+        margin: 0px;
+        margin-left: 10px;
+        font-size: 0.8em;
+    }
+}
+
+.spacer {
+    height: 20px;
+    width: 100%;
+}
+
+.header {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    display: block;
+    max-width: 868px;
+}
+
+.action-grid {
+    background: #ffffff;
+    margin-top: 2em;
+}
+
+#list-icon {
+    width:40px;
+}
+
+p {
+    font-family: 'Montserrat';
+}
+
+.action-item {
+    display: inline;
+}
+
+.action-item-text {
+    display: inline;
+    font-weight: 500;
+    font-family: 'Montserrat';
+    padding-left: 7px;
+    font-size: 1.1em;
+}
+
+.action-grid .pure-g {
+    padding: 0px;
+}
+
+.footer {
+    height: 33px;
+    font-size: 1em;
+    background: #002147;
+    position: static;
+    color: #fff;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding-top: 18px;
+}
+
+.contributor_item:hover {
+    box-shadow: rgba(0, 0, 0, 0.09) 0 6px 9px 0;
+    cursor: pointer;
+}
+
+.qa-grid {
+    margin-top: -20px;
+}
+
+h5 {
+    margin-bottom: -10px;
+    margin-top: 0px;
+}

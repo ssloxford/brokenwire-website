@@ -1,0 +1,204 @@
+<!doctype html>
+<html>
+<head>
+    <title>Brokenwire Attack</title>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/png" href="images/logo.svg">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css" integrity="sha384-Uu6IeWbM+gzNVXJcM9XV3SohHtmWE+3VGi496jvgX1jyvDTXfdK+rfZc8C1Aehk5" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/grids-responsive-min.css" />
+    <link rel="stylesheet" type="text/css" href="brokenwire.css">
+    <link rel="stylesheet" type="text/css" crossorigin="anonymous" href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,600">
+</head>
+<body>
+    <div class="main">
+        <div class="header">
+                <img class="logo" src="images/logo.png"></img>
+                <h1><span class="emphasized">Broken</span><span class="coloured">wire</span></h1>
+                <h2>Vulnerability in the Combined Charging System for Electric Vehicles</h2>
+        </div>
+        <div class="content">
+            <p>
+                <span class="emphasized">Brokenwire</span> is a novel attack against the <span class="emphasized">Combined Charging System (CCS)</span>, one of the most widely used DC rapid charging technologies for electric vehicles (EVs).
+                The attack <span class="emphasized">interrupts necessary control communication</span> between the vehicle and charger, causing charging sessions to abort. 
+                The attack can be conducted <span class="emphasized">wirelessly from a distance</span> using electromagnetic interference, allowing individual vehicles or entire fleets to be disrupted simultaneously.  
+                In addition, the attack can be mounted with off-the-shelf radio hardware and minimal technical knowledge. 
+                The exploited behavior is a required part of the HomePlug Green PHY, DIN 70121 & ISO 15118 standards and all known implementations exhibit it.
+            </p>
+            <p>
+                Brokenwire has immediate implications for many of the <span class="emphasized">12 million</span> battery EVs estimated to be on the roads worldwide --- and profound effects on the new wave of electrification for vehicle fleets, both for private enterprise and for crucial public services. 
+                In addition to electric cars, Brokenwire affects <span class="emphasized">electric ships, airplanes and heavy duty vehicles</span>.
+                As such, we conducted a disclosure to industry and discuss a range of mitigation techniques that could be deployed to limit the impact. 
+            </p>
+            <h5>Please note that due to the responsible disclosure a detailed explanation of the attack cannot be provided. This allows the manufacturers to work on a solution while reducing the risk of an exploitation of the vulnerability in the wild.</h5>
+        <div class="action-grid">
+            <div class="pure-g">
+                <div class="l-box pure-u-1"  onclick="window.open('https://arxiv.org/pdf/2202.02104', '_blank');">
+                    <div class="icon_text_container">
+                        <img id="list-icon" src="images/pdf_border.png">
+                        <p class="action-item-text">Download</p>
+                    </div>
+                    <p>You can download a preprint of the paper on ArXiv.</p>
+                </div>
+                <div class="divider"></div>
+                <div class="l-box pure-u-1"  onclick="window.open('brokenwire.bib', '_blank');">
+                    <div class="icon_text_container">
+                        <img id="list-icon" src="images/cite_border.png">
+                        <p class="action-item-text">Cite us</p>
+                    </div>
+                        <p>You want to cite our work? Great! Here you can find the bib-file.</p>
+                </div>
+                <div class="divider_horizontal"></div>
+                <div class="l-box pure-u-1"  onclick="window.open('https://github.com/ssloxford', '_blank');">
+                    <div class="icon_text_container">
+                        <img id="list-icon" src="images/github_border.png">
+                        <p class="action-item-text">GitHub</p>
+                    </div>
+                    <p>Our evaluation source code will be available on GitHub soon. Make sure to check it out!</p>
+                </div>
+                <div class="divider"></div>
+                <div class="l-box pure-u-1"  onclick="location.href='mailto:info@brokenwire.fail'">
+                    <div class="icon_text_container">
+                        <img id="list-icon" src="images/contact_us_border.png">
+                        <p class="action-item-text">Get in touch</p>
+                    </div>
+                    <p>If you have any questions, feel free to reach out to us.</p>
+                </div>
+            </div>
+        </div>
+        <h3>Background</h3>
+        <p>
+            The charging technology standardized as the Combined Charging System (CCS) --- the name presented to a vehicle user --- is in fact a collection of multiple technical standards. 
+            During the charging session, the Electric Vehicle (EV) and the Electric Vehicle Supply Equipment (EVSE) exchange important messages, such as the State of Charge (SoC) or the maximum possible current.
+            The high-bandwidth IP link used for the communication is provided by the HomePlug Green PHY (HPGP) power-line communication (PLC) technology.
+            Depending on the geographical region, CCS uses different plug types which are illustrated in Figure 1.
+            Nevertheless, the underlying technology is the same.
+        </p>
+        <div class="pure-g">
+            <div class="subfigure-1-2 pure-u-1-2">
+                <img class="figure-1-a" src="images/ccs_combo1.jpg">
+                <p class="subfigure-caption">(a) CCS Combo 1 (US).</p>
+            </div>
+            <div class="subfigure-1-2 pure-u-1-2">
+                <img class="figure-1-b" src="images/ccs_combo2.jpg">
+                <p class="subfigure-caption">(b) CCS Combo 2 (EU).</p>
+            </div>
+            <div class="figure-1-2 pure-u-1">
+                <a class="figure-caption">Figure 1: The two different plug layouts used by CCS in North America (Combo 1) and Europe (Combo 2) respectively.</a>
+            </div>
+        </div>
+        <h3>Attack Details</h3>
+        <p>
+            <h5>Some parts have been removed to allow manufacturers to work on countermeasures to ensure that the vulnerability is not exploited in the wild.</h5>
+            <h4>Method</h4>
+            <p>
+                We evaluated the attack in a lab environment under controlled settings for different distances between the charging cable and the attacker.
+                Our testbed was composed of the same HPGP modems found in most EVs and charging stations.
+                On the attacker side, we used a software-defined radio (LimeSDR) together with a 1 W RF amplifier and a self-made dipole antenna.
+                In addition, we tested the attack in a real-world study on seven vehicles from different manufacturers and 18 DC high-power chargers.             
+            </p>
+            <h4>Results</h4>
+            <p>
+                Figure 2 illustrates the results of our lab experiments.
+                Our results indicate that off-the-shelf equipment is sufficient to execute the attack from up to 10 m away.
+                With a power budget of 10 mW the attack was possible from 10 m away.
+            </p>
+            <div class="pure-g">
+                <div class="subfigure-1-2 pure-u-1-2">
+                    <img class="figure-1-1" src="images/power_vs_distance_dBm.jpg">
+                    <p class="subfigure-caption">(a) Results in dBm.</p>
+                </div>
+                <div class="subfigure-1-2 pure-u-1-2">
+                    <img class="figure-1-1" src="images/power_vs_distance_mW.jpg">
+                    <p class="subfigure-caption">(b) Results in mW.</p>
+                </div>
+                <div class="figure-1-2 pure-u-1">
+                    <a class="figure-caption">Figure 2: Results of the distance experiments in lab conditions. Minimum power required to cause a packet loss of 100%.</a>
+                </div>
+            </div>
+        </p>
+        <h3>Attack Demonstration</h3>
+        <div class="pure-g">
+            <div class="figure-1-2 pure-u-1">
+                <video width="100%" controls>
+                    <source src="images/charger_1_cropped.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <a class="figure-caption">Video 1: Demonstration of the attack on a CCS HPC charger. The vehicle is charging without any issues, but stops as soon as the malicious signal is emitted.</a>
+            </div>
+            <div class="spacer"></div>
+            <div class="subfigure-1-2 pure-u-1-2">
+                <img class="figure-1-1" src="images/charger_1.jpg">
+                <p class="subfigure-caption">(a) Charger 1.</p>
+            </div>
+            <div class="subfigure-1-2 pure-u-1-2">
+                <img class="figure-1-1" src="images/charger_2.jpg">
+                <p class="subfigure-caption">(b) Charger 2.</p>
+            </div>
+            <div class="figure-1-2 pure-u-1">
+                <a class="figure-caption">Figure 3: Error messages shown by the different charging stations we tested. The charging was working without issues, but as soon as the malicious signal was transmitted, the charging stopped.</a>
+            </div>
+        </div>
+        <h3>Questions &amp; Answers</h3>
+        <div class="qa-grid pure-g">
+            <div class="pure-u-1">
+                <p class="qa-header">Is my car affected?</p>
+                <p class="qa-text">Potentially! If your car has a charging port that looks like the one depicted in Figure 1, it is highly likely that the attack also works on your car.</p>
+            </div>
+            <div class="pure-u-1">
+                <p class="qa-header">I have a charger at home, can someone stop my car from charging?</p>
+                <p class="qa-text">Probably not. Most likely your home charger uses AC charging and a different communication standard (IEC 61851), so won't be affected. This might change in the future though, with home chargers getting ISO 15118 support.</p>
+            </div>
+            <div class="pure-u-1">
+                <p class="qa-header">Can Brokenwire also break my car?</p>
+                <p class="qa-text">We've never seen any evidence of long-term damage caused by the Brokenwire attack. Based on our development work, we also have good reason to expect there isn't any.</p>
+            </div>
+            <div class="pure-u-1">
+                <p class="qa-header">What can I do to prevent someone from interrupting my charging session?</p>
+                <p class="qa-text">Right now, the only way to prevent the attack is not to charge on a DC rapid charger.</p>
+            </div>
+        </div>
+        <h3>Contributors</h3>
+        <div class="pure-g">
+            <div class="contributor_item" onclick="window.open('https://cs.ox.ac.uk/people/sebastian.kohler', '_blank');">
+                <p class="contributer_name">Sebastian Köhler<sup>&#8224;</sup></p>
+                <p class="contributer_university">University of Oxford</p>
+            </div>
+            <div class="contributor_item" onclick="window.open('https://cs.ox.ac.uk/people/richard.baker', '_blank');">
+                <p class="contributer_name">Richard Baker<sup>&#8224;</sup></p>
+                <p class="contributer_university">University of Oxford</p>
+            </div>
+            <div class="contributor_item" onclick="window.open('https://cs.ox.ac.uk/people/martin.strohmeier', '_blank');">
+                <p class="contributer_name">Martin Strohmeier</p>
+                <p class="contributer_university">Armasuisse S+T</p>
+            </div>
+            <div class="contributor_item" onclick="window.open('https://cs.ox.ac.uk/people/ivan.martinovic', '_blank');">
+                <p class="contributer_name">Ivan Martinovic</p>
+                <p class="contributer_university">University of Oxford</p>
+            </div>
+        </div>
+        <p class="contributions_footnote"><sup>&#8224;</sup>Both authors contributed equally to this research.</p>
+        <h5>Ethical Considerations</h5>
+        <p class="acknowledgements">
+            Given the nature of the infrastructure under investigation, we collaborated with several government entities for our evaluation. 
+            We further took precautions to limit any risk of unintentional effects from our testing. 
+            We selected only test sites for which no other charging parks were within a reasonable range. 
+            We only executed the attack when no other vehicles were charging and could immediately abort the experiments if the conditions became uncontrolled. 
+            Outside our closed laboratory sites, we were limited to a maximum output power of 1 W to ensure our attack signal was compliant with all national transmission regulations.
+        </p>
+        <h5>Acknowledgements</h5>
+        <p class="acknowledgements">We are grateful for the support from Armasuisse and EWZ (Elektrizitätswerk der Stadt Zürich).</p>
+    </div>
+        
+        <div class="footer">
+                <a class="footer-text">© 2022 Systems Security Lab. All rights reserved.</a>
+        </div>
+    </div>
+    
+
+    
+
+
+    
+    
+</body>
