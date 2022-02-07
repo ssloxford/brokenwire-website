@@ -4,6 +4,7 @@
 
 .coloured {
     color: #F27200;
+    font-family: 'Montserrat';
 }
 
 .content {
@@ -120,7 +121,7 @@ a:active {
     .divider{
         height: 108px;
         border-left:2px solid #eee;
-        margin-top: 33px;
+        margin-top: 48px;
     }
 
     .figure-caption {
@@ -241,7 +242,7 @@ a:active {
     .divider{
         height: 108px;
         border-left:2px solid #eee;
-        margin-top: 33px;
+        margin-top: 48px;
     }
 
     .figure-caption {
