@@ -46,17 +46,22 @@ h4 {
     margin-top: -3px;
 }
 
-a:link {
-  text-decoration: none;
+.coloured_link {
+    color: #F27200;
+    font-family: 'Montserrat';
 }
-a:visited {
-  text-decoration: none;
+
+.coloured_link:link {
+    text-decoration: none;
 }
-a:hover {
-  text-decoration: underline;
+.coloured_link:visited {
+    text-decoration: none;
 }
-a:active {
-  text-decoration: underline;
+.coloured_link:hover {
+    text-decoration: underline;
+}
+.coloured_link:active {
+    text-decoration: underline;
 }
 
 @media screen and (min-width: 48em) and (max-width: 64em) {
@@ -69,7 +74,7 @@ a:active {
     h2 {
         margin-top: -30px;
         font-size: 1.2em;
-        font-weight: 100;
+        font-weight: 300;
         padding-bottom: 10px;
         text-align: center;
         border-bottom: solid;
@@ -189,7 +194,7 @@ a:active {
     h2 {
         margin-top: -30px;
         font-size: 1.4em;
-        font-weight: 100;
+        font-weight: 300;
         padding-bottom: 10px;
         text-align: center;
         border-bottom: solid;
@@ -311,7 +316,7 @@ a:active {
     h2 {
         margin-top: -20px;
         font-size: 1.0em;
-        font-weight: 100;
+        font-weight: 300;
         padding-bottom: 10px;
         text-align: center;
         border-bottom: solid;
@@ -442,7 +447,7 @@ a:active {
     h2 {
         margin-top: -15px;
         font-size: 0.9em;
-        font-weight: 100;
+        font-weight: 300;
         padding-bottom: 10px;
         text-align: center;
         border-bottom: solid;
