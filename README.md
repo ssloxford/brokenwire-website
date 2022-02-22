@@ -1,3 +1,3 @@
-# `BrokenWire` Attack
+# `Brokenwire` Attack
 
-This site will shortly provide details of the `BrokenWire` vulnerability. 
+This repository contains the source code for the website https://brokenwire.fail.

@@ -24,6 +24,7 @@
                 The attack <span class="emphasized">interrupts necessary control communication</span> between the vehicle and charger, causing charging sessions to abort.
                 The attack can be conducted <span class="emphasized">wirelessly from a distance</span> using electromagnetic interference, allowing individual vehicles or entire fleets to be disrupted simultaneously.
                 In addition, the attack can be mounted with off-the-shelf radio hardware and minimal technical knowledge.
+                With a power budged of 1 W, the attack is successful from around <span class="emphasized"> 47 m</span> distance.
                 The exploited behavior is a required part of the HomePlug Green PHY, DIN 70121 & ISO 15118 standards and all known implementations exhibit it.
             </p>
             <p>
@@ -144,6 +145,10 @@
         <h3>Questions &amp; Answers</h3>
         <div class="qa-grid pure-g">
             <div class="pure-u-1">
+                <p class="qa-header">Why would anyone want to disrupt the charging session?</p>
+                <p class="qa-text">While for an individual it might only be annoying, interrupting the charging for critical vehicles, such as electric ambulances, can have life-threatening consequences.</p>
+            </div>
+            <div class="pure-u-1">
                 <p class="qa-header">Is my car affected?</p>
                 <p class="qa-text">Potentially! If your car has a charging port that looks like the one depicted in Figure 1, it is highly likely that the attack also works on your car.</p>
             </div>
@@ -158,6 +163,10 @@
             <div class="pure-u-1">
                 <p class="qa-header">What can I do to prevent someone from interrupting my charging session?</p>
                 <p class="qa-text">Right now, the only way to prevent the attack is not to charge on a DC rapid charger.</p>
+            </div>
+            <div class="pure-u-1">
+                <p class="qa-header">Wouldn't it be easier to just press the emergency cutout switch or damage the cable?</p>
+                <p class="qa-text">It depends on the situation. Brokenwire does not require physical access and can disrupt the charging of multiple cars at once from several meters away, making it a stealthy and scalable attack.</p>
             </div>
         </div>
         <h3>Contributors</h3>
