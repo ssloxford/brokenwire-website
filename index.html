@@ -21,26 +21,25 @@
         <div class="content">
             <p>
                 <span class="emphasized">Brokenwire</span> is a novel attack against the <span class="emphasized">Combined Charging System (CCS)</span>, one of the most widely used DC rapid charging technologies for electric vehicles (EVs).
-                The attack <span class="emphasized">interrupts necessary control communication</span> between the vehicle and charger, causing charging sessions to abort.
+                The attack interrupts necessary control communication between the vehicle and charger, <span class="emphasized">causing charging sessions to abort</span>.
                 The attack can be conducted <span class="emphasized">wirelessly from a distance</span> using electromagnetic interference, allowing individual vehicles or entire fleets to be disrupted simultaneously.
                 In addition, the attack can be mounted with off-the-shelf radio hardware and minimal technical knowledge.
-                With a power budget of 1 W, the attack is successful from around <span class="emphasized"> 47 m</span> distance.
-                The exploited behavior is a required part of the HomePlug Green PHY, DIN 70121 & ISO 15118 standards and all known implementations exhibit it.
+                With a power budget of 1 W, the attack is successful from around <span class="emphasized">47 m</span> distance.
+                The <span class="emphasized">exploited CSMA/CA behavior</span> is a required part of the HomePlug GreenPHY, DIN 70121 & ISO 15118 standards and all known implementations exhibit it.
             </p>
             <p>
                 Brokenwire has immediate implications for many of the <span class="emphasized">12 million</span> battery EVs estimated to be on the roads worldwide &#8212; and profound effects on the new wave of electrification for vehicle fleets, both for private enterprise and for crucial public services.
                 In addition to electric cars, Brokenwire affects <span class="emphasized">electric ships, airplanes and heavy duty vehicles</span>.
-                As such, we conducted a disclosure to industry and discuss a range of mitigation techniques that could be deployed to limit the impact.
+                As such, we conducted a disclosure to industry and discuss in our paper a range of mitigation techniques that could be deployed to limit the impact.
             </p>
-            <h5>Please note that due to the responsible disclosure a detailed explanation of the attack cannot be provided. This allows the manufacturers to work on a solution while reducing the risk of an exploitation of the vulnerability in the wild.</h5>
         <div class="action-grid">
             <div class="pure-g">
-                <div class="l-box pure-u-1"  onclick="window.open('https://arxiv.org/pdf/2202.02104', '_blank');">
+                <div class="l-box pure-u-1"  onclick="window.open('https://www.ndss-symposium.org/wp-content/uploads/2023/02/ndss2023_s251_paper.pdf', '_blank');">
                     <div class="icon_text_container">
                         <img id="list-icon" src="images/pdf_border.png">
                         <p class="action-item-text">Download</p>
                     </div>
-                    <p>You can download a preprint of the paper on ArXiv.</p>
+                    <p>You can download the full paper from the NDSS website.</p>
                 </div>
                 <div class="divider"></div>
                 <div class="l-box pure-u-1"  onclick="window.open('brokenwire.bib', '_blank');">
@@ -51,12 +50,12 @@
                         <p>You want to cite our work? Great! Here you can find the bib-file.</p>
                 </div>
                 <div class="divider_horizontal"></div>
-                <div class="l-box pure-u-1"  onclick="window.open('https://github.com/ssloxford', '_blank');">
+                <div class="l-box pure-u-1"  onclick="window.open('https://github.com/ssloxford/brokenwire', '_blank');">
                     <div class="icon_text_container">
                         <img id="list-icon" src="images/github_border.png">
-                        <p class="action-item-text">GitHub</p>
+                        <p class="action-item-text">Get the code</p>
                     </div>
-                    <p>Our evaluation source code will be available on GitHub soon. Make sure to check it out!</p>
+                    <p>Our attack and evaluation source code are available on GitHub.</p>
                 </div>
                 <div class="divider"></div>
                 <div class="l-box pure-u-1"  onclick="location.href='mailto:info@brokenwire.fail'">
@@ -72,8 +71,8 @@
         <h3>Background</h3>
         <p>
             The charging technology standardized as the Combined Charging System (CCS) &#8212; the name presented to a vehicle user &#8212; is in fact a collection of multiple technical standards.
-            During the charging session, the Electric Vehicle (EV) and the Electric Vehicle Supply Equipment (EVSE) exchange important messages, such as the State of Charge (SoC) or the maximum possible current.
-            The high-bandwidth IP link used for the communication is provided by the HomePlug Green PHY (HPGP) power-line communication (PLC) technology.
+            During the charging session, the Electric Vehicle (EV) and the Electric Vehicle Supply Equipment (EVSE) exchange important messages, such as the State of Charge (SoC) and the maximum possible current.
+            The high-bandwidth IP link used for the communication is provided by the HomePlug GreenPHY (HPGP) power-line communication (PLC) technology.
             Depending on the geographical region, CCS uses different plug types which are illustrated in Figure 1.
             Nevertheless, the underlying technology is the same.
         </p>
@@ -92,19 +91,55 @@
         </div>
         <h3>Attack Details</h3>
         <p>
-            <h5>Some parts have been removed to allow manufacturers to work on countermeasures to ensure that the vulnerability is not exploited in the wild.</h5>
+            <p>
+                The Brokenwire attack exploits the Carrier-Sense Multiple Access with Collision Avoidance (CSMA/CA) mechanism that is required to be present in any standard-compliant implementation. The CSMA-CA behaviour is repeatedly triggered such that neither vehicle (EV) nor charger (EVSE) ever have an opportunity to transmit.
+                While this action alone could prevent communication indefinitely, it only needs to be applied for a few seconds in order to trigger a timeout in the higher layers of the communication protocol (e.g. ISO 15118). 
+                At this point, the entire charging process is aborted and the attacker can stop broadcasting, making it only necessary to have temporary physical proximity to the victim.
+            </p>
+            <h4>Exploiting CSMA/CA</h4>
+            <p>
+                The public HomePlug GreenPHY standard defines Carrier-Sense Multiple Access with Collision Avoidance (CSMA/CA) as a channel access method. 
+                If a node wishes to transmit a message, it will check for other nodes already transmitting. 
+                In case an ongoing transmission is detected, the node will wait for a short, random period of time before attempting to transmit again. 
+                This process is repeated indefinitely, until the transmission medium is idle, and the message can be transmitted.
+                <br>
+                The Brokenwire attack exploits this channel access mechanism to force the PLC modems at both nodes to endlessly back off and stop communicating. 
+                The attacker continuously transmits a recognizable signal, in this case a preamble, convincing any listening nodes that the channel is busy. 
+                The transmission is repeated indefinitely, such that both modems continue to wait and cannot transfer any data.
+            </p>
+            <h4>Generating an Attack Signal</h4>
+            <p>
+                In HPGP, the preamble is used to mark the beginning of a frame, to synchronize the receiver's clock with the transmitter and to permit channel state estimation. 
+                All frames begin with a standard HPGP preamble, which is sufficient to trigger the CSMA/CA mechanism in nodes that receive it. 
+                As such, Brokenwire uses a preamble waveform as an attack signal. 
+                The preamble is defined in the standard as a concatenation of repeated preamble symbols, each generated as follows:
+                <div class="pure-g">
+                    <img style="margin-left: auto; margin-right: auto; width: 20em" src="images/preamble_generation.jpg">
+                </div>
+                where t is the preamble sample time step (for 0 &le; t &le; 384-1), C is the set of unmasked subcarriers, c is the subcarrier index and &psi; is a function mapping subcarriers to specific phase offsets defined in the standard.
+            </p>
+            <h4>Injecting the Attack Signal</h4>
+            <p>
+                As shown by Baker et al., the charging cable acts as an unintentional antenna that leads to electromagnetic emanation. 
+                At the same time, this phenomenon makes the charging cable susceptible to electromagnetic interference. 
+                Since the cable is unshielded, electromagnetic waves can easily couple onto the wires within it. 
+                While the PLC uses differential signaling over two wires, any asymmetries in the two pathways lead to some signal still being retained. 
+                By transmitting the attack signal over-the-air, an attacker can therefore cause sufficient coupling on the charging cable of a victim EVSE for it to correctly detect the injected preambles.
+            </p>
+        </p>
+        <h3>Attack Evaluation</h3>
             <h4>Method</h4>
             <p>
                 We evaluated the attack in a lab environment under controlled settings for different distances between the charging cable and the attacker.
                 Our testbed was composed of the same HPGP modems found in most EVs and charging stations.
                 On the attacker side, we used a software-defined radio (LimeSDR) together with a 1 W RF amplifier and a self-made dipole antenna.
-                In addition, we tested the attack in a real-world study on seven vehicles from different manufacturers and 18 DC high-power chargers.
+                In addition, we tested the attack in a real-world study on eight vehicles from different manufacturers and 20 DC high-power chargers.
             </p>
             <h4>Results</h4>
             <p>
                 Figure 2 illustrates the results of our lab experiments.
                 Our results indicate that off-the-shelf equipment is sufficient to execute the attack from up to 10 m away.
-                With a power budget of 10 mW the attack was possible from 10 m away.
+                With additional amplification and a total power budget of 1 W, we demonstrated the attack in real-world settings from around 47 m away.
             </p>
             <div class="pure-g">
                 <div class="subfigure-1-2 pure-u-1-2">
@@ -119,7 +154,6 @@
                     <a class="figure-caption">Figure 2: Results of the distance experiments in lab conditions. Minimum power required to cause a packet loss of 100%.</a>
                 </div>
             </div>
-        </p>
         <h3>Attack Demonstration</h3>
         <div class="pure-g">
             <div class="figure-1-2 pure-u-1">
@@ -140,6 +174,13 @@
             </div>
             <div class="figure-1-2 pure-u-1">
                 <a class="figure-caption">Figure 3: Error messages shown by the different charging stations we tested. The charging was working without issues, but as soon as the malicious signal was transmitted, the charging stopped.</a>
+            </div>
+            <div class="figure-1-2 pure-u-1">
+                <video width="100%" controls>
+                    <source src="images/drive_by.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <a class="figure-caption">Video 2: Demonstration of the drive-by attack.</a>
             </div>
         </div>
         <h3>Questions &amp; Answers</h3>
@@ -181,7 +222,7 @@
             </div>
             <div class="contributor_item" onclick="window.open('https://cs.ox.ac.uk/people/martin.strohmeier', '_blank');">
                 <p class="contributer_name">Martin Strohmeier</p>
-                <p class="contributer_university">Armasuisse S+T</p>
+                <p class="contributer_university">armasuisse S+T</p>
             </div>
             <div class="contributor_item" onclick="window.open('https://cs.ox.ac.uk/people/ivan.martinovic', '_blank');">
                 <p class="contributer_name">Ivan Martinovic</p>
@@ -198,11 +239,11 @@
             Outside our closed laboratory sites, we were limited to a maximum output power of 1 W to ensure our attack signal was compliant with all national transmission regulations.
         </p>
         <h5>Acknowledgements</h5>
-        <p class="acknowledgements">We are grateful for the support from Armasuisse and EWZ (Elektrizitätswerk der Stadt Zürich).</p>
+        <p class="acknowledgements">We are grateful for the support from armasuisse S+T and EWZ (Elektrizitätswerk der Stadt Zürich).</p>
     </div>
 
         <div class="footer">
-                <a class="footer-text">© 2022 Systems Security Lab. All rights reserved.</a>
+                <a class="footer-text">© 2023 Systems Security Lab. All rights reserved.</a>
         </div>
     </div>
 
